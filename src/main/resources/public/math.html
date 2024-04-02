@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Calculadora</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Math Services</h1>
+        <form action="/lucasseq">
+            <label for="value">Ingrese el valor para computar la secuencia de Lucas:</label><br>
+            <input type="text" id="value" name="name" value="13"><br><br>
+            <input type="button" value="Calcular" onclick="loadGetMsg()">
+        </form>
+        <h3>Resultado</h3>
+        <div id="getrespmsg"></div>
+        <script>
+            function loadGetMsg() {
+                let valueVar = document.getElementById("value").value;
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function() {
+                    document.getElementById("getrespmsg").innerHTML = this.responseText;
+                }
+                xhttp.open("GET", "/lucasseq?value="+valueVar);
+                xhttp.send();
+        </script>
+    </body>
+</html>
